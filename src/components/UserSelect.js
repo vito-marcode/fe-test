@@ -36,11 +36,11 @@ function UserSelect () {
     <ErrorBoundary force={error}>
       <Spinner show={isLoading} />
       {Boolean(data) && (
-        <Paper sx={{ p: 2, height: 400 }}>
+        <Paper sx={{ p: 2 }}>
           <Typography component='h2' variant='h6' color='primary' gutterBottom>
             Select the current user
           </Typography>
-          <FormControl sx={{ mx: 0, my: 2, minWidth: 200 }}>
+          <FormControl fullWidth sx={{ mx: 0, my: 2 }}>
             <InputLabel id='user-label'>User</InputLabel>
             <Select
               labelId='user-label'

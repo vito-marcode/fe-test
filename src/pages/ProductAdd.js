@@ -98,12 +98,7 @@ export default function ProductAdd () {
       <ErrorBoundary force={error}>
         <Spinner show={isLoading} />
 
-        <Paper
-          sx={{
-            p: 2,
-            height: 600
-          }}
-        >
+        <Paper sx={{ p: 2 }}>
           <Typography component='h2' variant='h6' color='primary' gutterBottom>
             New Product
           </Typography>

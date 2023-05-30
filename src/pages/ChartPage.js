@@ -6,6 +6,7 @@ import config from '../config/config'
 import Container from '@mui/material/Container'
 import PageBreadcrumbs from '../components/PageBreadcrumbs'
 import PageTitle from '../components/PageTitle'
+import Paper from '@mui/material/Paper'
 const PolarAreaChartLazy = lazy(() => import('../components/PolarAreaChart'))
 
 function ChartPage () {
@@ -20,9 +21,11 @@ function ChartPage () {
       <ErrorBoundary force={error}>
         <Spinner show={isLoading} />
         {Boolean(data) && (
-          <Suspense fallback={<Spinner show />}>
-            <PolarAreaChartLazy data={data} />
-          </Suspense>
+          <Paper sx={{ p: 2 }}>
+            <Suspense fallback={<Spinner show />}>
+              <PolarAreaChartLazy data={data} />
+            </Suspense>
+          </Paper>
         )}
       </ErrorBoundary>
     </Container>

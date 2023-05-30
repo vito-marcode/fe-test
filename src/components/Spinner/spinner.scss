@@ -1,0 +1,13 @@
+.spinner-component {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  touch-action: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}

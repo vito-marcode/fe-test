@@ -4,22 +4,25 @@ import Chart from 'chart.js/auto';
 
 function PolarAreaChart({data: apiData}) {
   const canvasRef = React.createRef();
-  const data = {
-    labels: apiData.map(c => c.category),
-    datasets: [{
-      label: 'Products',
-      data: apiData.map(c => c.numberOfProducts),
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(75, 192, 192)',
-        'rgb(255, 205, 86)',
-        'rgb(201, 203, 207)',
-        'rgb(54, 162, 235)',
-        'rgb(153, 102, 255)',
-        'rgb(201, 203, 207)'
-      ]
-    }]
-  };
+  const [data] = React.useMemo(() => {
+    const dataObj = {
+      labels: apiData.map(c => c.category),
+      datasets: [{
+        label: 'Products',
+        data: apiData.map(c => c.numberOfProducts),
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(75, 192, 192)',
+          'rgb(255, 205, 86)',
+          'rgb(201, 203, 207)',
+          'rgb(54, 162, 235)',
+          'rgb(153, 102, 255)',
+          'rgb(201, 203, 207)'
+        ]
+      }]
+    }
+    return [dataObj]
+  }, [apiData]);
 
   React.useEffect(() => {
     let chart;

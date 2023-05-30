@@ -1,15 +1,11 @@
-import { Navigate } from "react-router";
+import { Navigate } from 'react-router'
 
-const ProtectedRoute = ({
-  user,
-  redirectPath = '/user',
-  children,
-}) => {
+const ProtectedRoute = ({ user, redirectPath = '/user', children }) => {
   if (!user) {
-    return <Navigate to={redirectPath} replace />;
+    return <Navigate to={redirectPath} replace />
   }
 
-  return children;
-};
+  return children
+}
 
 export default ProtectedRoute

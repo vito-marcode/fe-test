@@ -1,30 +1,24 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+import * as React from 'react'
+import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
 
-export default function AlertDialog({open, setOpen, onConfirm}) {
-
+export default function AlertDialog ({ open, setOpen, onConfirm }) {
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const handleConfirm = () => {
-    onConfirm();
+    onConfirm()
   }
 
   return (
     <div>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-      >
+      <Dialog open={open} onClose={handleClose}>
         <DialogContent>
-          <DialogContentText>
-            {"Delete this product?"}
-          </DialogContentText>
+          <DialogContentText>{'Delete this product?'}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
@@ -34,5 +28,5 @@ export default function AlertDialog({open, setOpen, onConfirm}) {
         </DialogActions>
       </Dialog>
     </div>
-  );
+  )
 }

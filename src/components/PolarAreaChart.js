@@ -1,49 +1,49 @@
-import React from 'react';
-import Chart from 'chart.js/auto';
+import React from 'react'
+import Chart from 'chart.js/auto'
 
-
-function PolarAreaChart({data: apiData}) {
-  const canvasRef = React.createRef();
+function PolarAreaChart ({ data: apiData }) {
+  const canvasRef = React.createRef()
   const [data] = React.useMemo(() => {
     const dataObj = {
       labels: apiData.map(c => c.category),
-      datasets: [{
-        label: 'Products',
-        data: apiData.map(c => c.numberOfProducts),
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(75, 192, 192)',
-          'rgb(255, 205, 86)',
-          'rgb(201, 203, 207)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)'
-        ]
-      }]
+      datasets: [
+        {
+          label: 'Products',
+          data: apiData.map(c => c.numberOfProducts),
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(75, 192, 192)',
+            'rgb(255, 205, 86)',
+            'rgb(201, 203, 207)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+          ]
+        }
+      ]
     }
     return [dataObj]
-  }, [apiData]);
+  }, [apiData])
 
   React.useEffect(() => {
-    let chart;
+    let chart
     if (canvasRef.current && data) {
       chart = new Chart(canvasRef.current, {
         type: 'polarArea',
         data: data,
         options: {}
-      });
+      })
     } else if (chart && !data) {
-      chart.destroy();
+      chart.destroy()
     }
-    return () => chart && chart.destroy();
-  }, [canvasRef, data]);
+    return () => chart && chart.destroy()
+  }, [canvasRef, data])
 
   return (
-      <div>
-        <canvas ref={canvasRef} />
-      </div>
-  );
+    <div>
+      <canvas ref={canvasRef} />
+    </div>
+  )
 }
 
-export default PolarAreaChart;
-
+export default PolarAreaChart

@@ -1,33 +1,32 @@
-import React, { Suspense, lazy } from "react";
-import ErrorBoundary from "../components/ErrorBoundary";
-import useDataProvider from "../hooks/useDataProvider";
-import Spinner from "../components/Spinner/Spinner";
-import config from "../config/config";
-import Container from "@mui/material/Container";
-import PageBreadcrumbs from "../components/PageBreadcrumbs";
-import PageTitle from "../components/PageTitle";
+import React, { Suspense, lazy } from 'react'
+import ErrorBoundary from '../components/ErrorBoundary'
+import useDataProvider from '../hooks/useDataProvider'
+import Spinner from '../components/Spinner/Spinner'
+import config from '../config/config'
+import Container from '@mui/material/Container'
+import PageBreadcrumbs from '../components/PageBreadcrumbs'
+import PageTitle from '../components/PageTitle'
 const PolarAreaChartLazy = lazy(() => import('../components/PolarAreaChart'))
 
-function ChartPage() {
+function ChartPage () {
   const url = config.baseUrl + 'stores/' + config.idStore + '/stats/categories'
   const { error, isLoading, data } = useDataProvider({
     url: url
-  });
+  })
   return (
-    <Container maxWidth="sm" sx={{ p: 0 }}>      
-      <PageBreadcrumbs
-        current={"Chart"}
-      />
+    <Container maxWidth='sm' sx={{ p: 0 }}>
+      <PageBreadcrumbs current={'Chart'} />
       <PageTitle>Chart</PageTitle>
       <ErrorBoundary force={error}>
         <Spinner show={isLoading} />
-        {Boolean(data) &&
-        <Suspense fallback={<Spinner show />}>
-          <PolarAreaChartLazy data={data}/>
-        </Suspense>}
+        {Boolean(data) && (
+          <Suspense fallback={<Spinner show />}>
+            <PolarAreaChartLazy data={data} />
+          </Suspense>
+        )}
       </ErrorBoundary>
     </Container>
-  );
+  )
 }
 
 export default ChartPage

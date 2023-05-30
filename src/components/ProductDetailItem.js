@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
-
 import CategoryIcon from '@mui/icons-material/Category';
 import FaceIcon from '@mui/icons-material/Face';
 import React from "react";
@@ -24,8 +23,12 @@ function ProductDetailItem({ data, hideTitle }) {
         }}>
         {data.description}
       </Box>
-      <Box sx={{ color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
-        {data.price} €
+      <Box sx={{ display: 'flex', alignItems: 'baseline', color: 'text.primary', fontSize: 34, fontWeight: 'medium' }}>
+        {Math.floor(data.price)}
+        <Box sx={{ fontSize: 22 }}>
+          ,{(data.price % 1).toFixed(2).substring(2)}
+        </Box>
+        <Box sx={{ px: 1 }}>{"€"}</Box>
       </Box>
       <Box display="flex" justifyContent="space-between" flexWrap="wrap" gap={1}>
         <Box >

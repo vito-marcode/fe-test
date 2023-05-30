@@ -1,27 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
-import HomePage from "./pages/HomePage"
-import UserPage from "./pages/UserPage"
-import { Route, Routes } from 'react-router-dom';
-import ProductDetail from './pages/ProductDetail';
-import UserContext from './components/_storages/UserContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import { Container } from '@mui/material';
-import MenuBar from './components/MenuBar';
-import ProductAdd from './pages/ProductAdd';
-import ChartPage from './pages/ChartPage';
+import HomePage from './pages/HomePage'
+import UserPage from './pages/UserPage'
+import { Route, Routes } from 'react-router-dom'
+import ProductDetail from './pages/ProductDetail'
+import UserContext from './components/_storages/UserContext'
+import ProtectedRoute from './components/ProtectedRoute'
+import { Container } from '@mui/material'
+import MenuBar from './components/MenuBar'
+import ProductAdd from './pages/ProductAdd'
+import ChartPage from './pages/ChartPage'
 
-function App() {
+function App () {
   return (
     <UserContext.Consumer>
       {({ user }) => (
         <Fragment>
           <MenuBar />
-          <Container sx={{ py: 2 }} maxWidth="lg">
+          <Container sx={{ py: 2 }} maxWidth='lg'>
             <Routes>
               <Route
                 exact
-                path="/"
+                path='/'
                 element={
                   <ProtectedRoute user={user}>
                     <HomePage />
@@ -29,7 +29,7 @@ function App() {
                 }
               />
               <Route
-                path="/:id"
+                path='/:id'
                 element={
                   <ProtectedRoute user={user}>
                     <UserPage />
@@ -37,19 +37,17 @@ function App() {
                 }
               />
               <Route
-                path="/products/:id"
+                path='/products/:id'
                 element={
                   <ProtectedRoute user={user}>
                     <ProductDetail />
                   </ProtectedRoute>
                 }
-              />              
-              <Route
-                path="/user"
-                element={<UserPage />} />
+              />
+              <Route path='/user' element={<UserPage />} />
               <Route
                 exact
-                path="/new-product"
+                path='/new-product'
                 element={
                   <ProtectedRoute user={user}>
                     <ProductAdd />
@@ -58,14 +56,13 @@ function App() {
               />
               <Route
                 exact
-                path="/chart"
+                path='/chart'
                 element={
                   <ProtectedRoute user={user}>
                     <ChartPage />
                   </ProtectedRoute>
                 }
               />
-
             </Routes>
           </Container>
         </Fragment>
@@ -74,4 +71,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
